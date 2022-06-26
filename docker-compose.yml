@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  search_term:
+    stdin_open: true
+    build:
+      context: ./
+    volumes:
+      - .:/workflow
+    ports:
+      - 5000:5000
+    environment:
+      - SEARCH_TERM=sono
+      - BASE_URL=https://api.company-information.service.gov.uk/search/companies
+      - ITEMS_PER_PAGE=100
+      - START_INDEX=0
+      - TABLE_NAME=companies
+      - DATABASE_NAME=sonovate
