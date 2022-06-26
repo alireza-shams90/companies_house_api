@@ -34,4 +34,5 @@ After setting environment variables run :
 ```
 docker-compose up --build
 ```
-The output is saved to a db sqlite file called DATABASE_NAME.db which can be queried by selecting from the table TABLE_NAME.
+
+The output is saved to a db sqlite file called DATABASE_NAME.db which can be queried by selecting from a table called TABLE_NAME.
