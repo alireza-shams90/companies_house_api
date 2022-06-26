@@ -28,3 +28,10 @@ This application can be ran via Docker. All the variables are passed through doc
 * `ITEMS_PER_PAGE`: The number of search results to return per page.
 * `START_INDEX`: The index of the first result item to return.
 * `TABLE_NAME`: Name of the table to store the search results e.g. companies - name and address 
+* `DATABASE_NAME`: Name of the database to store the data e.g. sonovate. As sqlite being used, this will be the database file name as well e.g. sonovate.db
+
+After setting environment variables run :
+```
+docker-compose up --build
+```
+The output is saved to a db sqlite file called DATABASE_NAME.db which can be queried by selecting from the table TABLE_NAME.
