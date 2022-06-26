@@ -14,3 +14,17 @@ An API caller to companies house API with the ability of storing results into da
    * DB to store the results of API calls. 
 * `logger.py`
    * The class for setting of a logger using a common format.
+* `sql_query.py`
+   * Place to hold the sql scripts. 
+
+ ### utils
+ * `find_digits_in_string.py`
+   * A utility function to find digits inside a string.
+
+## Running the application
+This application can be ran via Docker. All the variables are passed through docker-compose.yml file:
+`SEARCH_TERM`: This is the term that application looking for e.g. sono
+`BASE_URL`: The base URL of companies house REST API e.g. https://api.company-information.service.gov.uk/search/companies
+`ITEMS_PER_PAGE`: The number of search results to return per page.
+`START_INDEX`: The index of the first result item to return.
+`TABLE_NAME`: Name of the table to store the search results e.g. companies - name and address 
