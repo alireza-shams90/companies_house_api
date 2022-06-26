@@ -21,6 +21,10 @@ An API caller to companies house API with the ability of storing results into da
  * `find_digits_in_string.py`
    * A utility function to find digits inside a string.
 
+ ### .env file
+* `.env`
+   * This file holds environment sensetive variables e.g. api_key. In order to tun the application the the api_key need to be presented in this file.
+
 ## Running the application
 This application can be ran via Docker. All the variables are passed through docker-compose.yml file:
 * `SEARCH_TERM`: This is the term that application looking for e.g. sono
