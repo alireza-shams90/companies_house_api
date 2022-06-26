@@ -23,8 +23,8 @@ An API caller to companies house API with the ability of storing results into da
 
 ## Running the application
 This application can be ran via Docker. All the variables are passed through docker-compose.yml file:
-`SEARCH_TERM`: This is the term that application looking for e.g. sono
-`BASE_URL`: The base URL of companies house REST API e.g. https://api.company-information.service.gov.uk/search/companies
-`ITEMS_PER_PAGE`: The number of search results to return per page.
-`START_INDEX`: The index of the first result item to return.
-`TABLE_NAME`: Name of the table to store the search results e.g. companies - name and address 
+* `SEARCH_TERM`: This is the term that application looking for e.g. sono
+* `BASE_URL`: The base URL of companies house REST API e.g. https://api.company-information.service.gov.uk/search/companies
+* `ITEMS_PER_PAGE`: The number of search results to return per page.
+* `START_INDEX`: The index of the first result item to return.
+* `TABLE_NAME`: Name of the table to store the search results e.g. companies - name and address 
