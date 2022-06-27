@@ -23,6 +23,7 @@ def _api_get_requester(base_url, api_key, payload):
         time.sleep(60)
         try:
             response = requests.get(base_url, auth=(api_key, ''), params=payload)
+            response.raise_for_status()
         except requests.exceptions.Timeout:
             logger.error("Another timeout error!")
             raise SystemExit("Seems like something wrong with the server. You need to retry later")
