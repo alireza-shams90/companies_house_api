@@ -17,6 +17,7 @@ def _api_get_requester(base_url, api_key, payload):
     logger = Logger('api_get_requester').set_logger()
     try:
         response = requests.get(base_url, auth=(api_key, ''), params=payload)
+        response.raise_for_status()
     except requests.exceptions.Timeout:
         logger.error("Timeout error! Will sleep for a minute and retry")
         time.sleep(60)
