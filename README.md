@@ -40,3 +40,11 @@ docker-compose up --build
 ```
 
 The output is saved to a db sqlite file called DATABASE_NAME.db which can be queried by selecting from a table called TABLE_NAME.
+
+## Running unit tests
+
+In order to run the unit tests you will need to run the command below in command line:
+
+```
+python -m unittest discover tests
+```
