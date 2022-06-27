@@ -1,7 +1,7 @@
 # companies_house_api_call
 
 ## Summary
-An API caller to companies house API with the ability of storing results into database.
+An API caller to companies house REST API with the ability of storing results into a database.
 
 ### Companies house API
 * `main.py`
@@ -23,7 +23,7 @@ An API caller to companies house API with the ability of storing results into da
 
  ### .env file
 * `.env`
-   * This file holds environment sensetive variables e.g. api_key. In order to tun the application the the api_key need to be presented in this file.
+   * This file holds environment sensetive variables e.g. api_key. In order to tun the application the api_key need to be presented in this file.
 
 ## Running the application
 This application can be ran via Docker. All the variables are passed through docker-compose.yml file:
