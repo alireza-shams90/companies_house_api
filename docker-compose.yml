@@ -16,3 +16,4 @@ services:
       - START_INDEX=0
       - TABLE_NAME=companies
       - DATABASE_NAME=sonovate
+      - MAX_NUM_API_CALL_TRIES=600

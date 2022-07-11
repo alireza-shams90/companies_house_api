@@ -39,6 +39,21 @@ def _api_get_requester(base_url, api_key, payload):
     return response.json()
 
 
+def _json_response_to_list_of_tuples(list_of_companies_details):
+    """
+    :param list_of_companies_details: list of dictionaries as company details
+    :return: List of tuples as company details
+    """
+    list_of_companies_details_output = [(i.get('company_number'), i.get('title'), i.get('company_type'),
+                                        i.get('date_of_creation'), i.get('date_of_cessation'),
+                                        i['address'].get('address_line_1'), i['address'].get('premises'),
+                                        i['address'].get('locality'), i['address'].get('country'),
+                                        i['address'].get('postal_code'), i.get('company_status'),
+                                        i.get('description_identifier')[0], digits_of_string(i['address'].get('premises')),
+                                        ) for i in list_of_companies_details]
+    return list_of_companies_details_output
+
+
 def search_companies(search_term, items_per_page=100, start_index=0, restrictions=None):
     """
     :param search_term: string - The term being searched for
@@ -63,6 +78,7 @@ def search_companies(search_term, items_per_page=100, start_index=0, restriction
     logger.info(f"API call returned {num_total_results} companies.")
     list_of_companies_details = companies_batch_results['items']
     start_index += items_per_page
+    max_api_call_tries = os.getenv('MAX_NUM_API_CALL_TRIES')
     number_of_api_calls = 1
     while num_total_results > start_index:
         payload['start_index'] = start_index
@@ -71,16 +87,12 @@ def search_companies(search_term, items_per_page=100, start_index=0, restriction
         list_of_companies_details.extend(companies_batch_results['items'])
         start_index += items_per_page
         number_of_api_calls += 1
-        if number_of_api_calls > 599:
+        if number_of_api_calls > max_api_call_tries - 1:
             logger.info(f"Already sent {number_of_api_calls} requests! I'm tired! Need to sleep for 5 minutes -:")
+            number_of_api_calls = 0
             time.sleep(300)
-    list_of_companies_details = [(i.get('company_number'), i.get('title'), i.get('company_type'),
-                                  i.get('date_of_creation'), i.get('date_of_cessation'),
-                                  i['address'].get('address_line_1'), i['address'].get('premises'),
-                                  i['address'].get('locality'), i['address'].get('country'),
-                                  i['address'].get('postal_code'), i.get('company_status'),
-                                  i.get('description_identifier')[0], digits_of_string(i['address'].get('premises')),
-                                  ) for i in list_of_companies_details]
-    return list_of_companies_details
+
+    list_of_tuple_companies_details = _json_response_to_list_of_tuples(list_of_companies_details)
+    return list_of_tuple_companies_details
 
 
